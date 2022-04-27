@@ -14,8 +14,7 @@ var roleHarvester0 = {
                         return (
                             structure.structureType == STRUCTURE_SPAWN ||
                             // structure.structureType == STRUCTURE_CONTAINER ||
-                            structure.structureType == STRUCTURE_EXTENSION ||
-                            structure.structureType == STRUCTURE_TOWER) && 
+                            structure.structureType == STRUCTURE_EXTENSION ) && 
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
@@ -27,7 +26,8 @@ var roleHarvester0 = {
                 var targets = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (
-                            structure.structureType == STRUCTURE_CONTAINER ) && 
+                            structure.structureType == STRUCTURE_CONTAINER ||
+                            structure.structureType == STRUCTURE_TOWER) && 
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
