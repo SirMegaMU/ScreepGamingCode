@@ -7,13 +7,13 @@ var roleWallBuilder = require('role.wallbuilder');
 var roleTransferer = require('role.transferer')
 var roleTower1 = require('role.tower1');
 var roleOutHarvester0 = require('role.outhavester0');
-
+var roleOutHarvester1 = require('role.outhavester1');
 
 /* 各种工作的Screep数 */
-var numHarvester0 = 3       ; var numHarvester1 = 3         ; var numUpgrader = 4           ;
-var numBuilder = 2          ; var numRepairer = 0           ; var numWallBuilder = 2        ;
+var numHarvester0 = 3       ; var numHarvester1 = 3         ; var numUpgrader = 5           ;
+var numBuilder = 3          ; var numRepairer = 0           ; var numWallBuilder = 2        ;
 var numTransferer = 1       ; 
-var numOutHarvester0 = 3    ;
+var numOutHarvester0 = 3    ; var numOutHarvester1 = 4      ;
 
 module.exports.loop = function () {
 
@@ -63,6 +63,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'outharvester0') {
             roleOutHarvester0.run(creep);
+        }
+        if(creep.memory.role == 'outharvester1') {
+            roleOutHarvester1.run(creep);
         }
 
     }
@@ -121,5 +124,12 @@ module.exports.loop = function () {
         var newName = 'OutHarvester0-' + Game.time;//console.log('Spawning new wallbuilder: ' + newName);
         Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, 
             {memory: {role: 'outharvester0'}});        
+    }
+
+    var outharvester1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'outharvester1');
+    if(outharvester1.length < numOutHarvester1) {
+        var newName = 'OutHarvester1-' + Game.time;//console.log('Spawning new wallbuilder: ' + newName);
+        Game.spawns['Home1'].spawnCreep([WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, 
+            {memory: {role: 'outharvester1'}});        
     }
 }

@@ -1,29 +1,35 @@
-var roleOutHarvester0 = {
+var roleOutHarvester1 = {
 
     
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        var roomname ='W52N8' ;
+        var roomname ='W53N9' ;
         var Homename = 'W53N8';
         const room = Game.rooms[roomname];
         const Home = Game.rooms[Homename];
 
 	    if(creep.store.getFreeCapacity() > 0) {
             if (creep.room.name!=roomname){
-                creep.moveTo(new RoomPosition(47, 31, roomname),{reusePath:10})
+                creep.moveTo(new RoomPosition(31, 4, roomname),{reusePath:10})
             }
             else{
-                let closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-                var sources = creep.room.find(FIND_SOURCES);
-                if (!closestHostile) {
-                    if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                //let closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+                var sources = creep.room.find(FIND_DROPPED_RESOURCES);
+                //if (!closestHostile) {
+                    if(sources.length>0){
+                        if(creep.pickup(sources[0]) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                        }
+                        else{
+                            var sources = creep.room.find(FIND_SOURCES);
+                            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                            }
+                        }
                     }
-                }
-                else {
-                    creep.moveTo(new RoomPosition(25, 25, Homename),{reusePath:10})
-                }
+                    
+                //}else {creep.moveTo(new RoomPosition(25, 25, Homename),{reusePath:10})}
             }  
         }
         else {
@@ -52,4 +58,4 @@ var roleOutHarvester0 = {
 	}
 };
 
-module.exports = roleOutHarvester0;
+module.exports = roleOutHarvester1;

@@ -13,43 +13,35 @@ var transferer = {
                 }
             }
             else{
-            // find closest container
-            let container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: s => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
-            });
-            /*
-            if (container == undefined) {
-                container = creep.room.storage;
-            }
-            */
-            // if one was found
-            if (container != undefined) {
-                // try to withdraw energy, if the container is not in range
-                if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    // move towards it
-                    creep.moveTo(container);
-                }
-            }
-            
-            else
-            {   var resources = creep.room.find(FIND_DROPPED_RESOURCES);
+                var resources = creep.room.find(FIND_DROPPED_RESOURCES);
                 if(resources.length>0)
                 {
                     if(creep.pickup(resources[0])==ERR_NOT_IN_RANGE)
                     {
                         creep.moveTo(resources[0]);
                     }
-                }
-                else{
-                    var sources = creep.pos.findClosestByPath(FIND_SOURCES);
-                if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
-                }
-                
-            }
-            }
-            }
+                }else
+                {   
+                    // find closest container
+                    let container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: s => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
+                    });
 
+                    if (container != undefined) {
+                    // try to withdraw energy, if the container is not in range
+                        if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            // move towards it
+                            creep.moveTo(container);
+                    }
+                    else{
+                        var sources = creep.pos.findClosestByPath(FIND_SOURCES);
+                        if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
+                            }
+                        }
+                    }
+                }
+            }
         }
         else {
             var targets = creep.room.find(FIND_STRUCTURES, {
