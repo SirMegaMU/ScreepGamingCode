@@ -22,7 +22,7 @@ var roleOutHarvester0 = {
                     }
                 }
                 else {
-                    creep.moveTo(new RoomPosition(25, 25, Homename),{reusePath:10})
+                    creep.moveTo(new RoomPosition(47, 31, Homename),{reusePath:10})
                 }
             }  
         }
