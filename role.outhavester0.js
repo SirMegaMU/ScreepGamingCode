@@ -11,7 +11,7 @@ var roleOutHarvester0 = {
 
 	    if(creep.store.getFreeCapacity() > 0) {
             if (creep.room.name!=roomname){
-                creep.moveTo(new RoomPosition(47, 31, roomname),{reusePath:10})
+                creep.moveTo(new RoomPosition(1, 31, roomname),{reusePath:10})
             }
             else{
                 let closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
@@ -35,7 +35,10 @@ var roleOutHarvester0 = {
                 var targets = Home.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (
-                            structure.structureType == STRUCTURE_CONTAINER ) && 
+                            structure.structureType == STRUCTURE_SPAWN ||
+                            structure.structureType == STRUCTURE_CONTAINER ||
+                            structure.structureType == STRUCTURE_EXTENSION ||
+                            structure.structureType == STRUCTURE_TOWER ) && 
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
                 });
