@@ -1,10 +1,12 @@
 var ScreepGenerate = {
     run:function()
     {
+        /* 开始生产功能性Creep的界值 */
+        var limit = 700;
         /* 各种工作的Screep数 */
-        var numHarvester0 = 3       ; var numHarvester1 = 3         ; var numUpgrader = 1           ;
+        var numHarvester0 = 3       ; var numHarvester1 = 3         ; var numUpgrader = 4           ;
         var numBuilder = 1          ; var numRepairer = 1           ; var numWallBuilder = 1        ;
-        var numTransferer = 1       ; var numOutHarvester0 = 1      ; var numOutHarvester1 = 1      ;
+        var numTransferer = 1       ; var numOutHarvester0 = 3      ; var numOutHarvester1 = 2      ;
         
         var transferer = _.filter(Game.creeps, (creep) => creep.memory.role == 'transferer');
         if(transferer.length < numTransferer) {
@@ -26,8 +28,8 @@ var ScreepGenerate = {
             Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE], newName, {memory: {role: 'harvester0'}});        
         }
 
-
-        if(Game.rooms['W53N8'].energyAvailable>=700)
+        //重要！慎改！否则可能不会有些制造收集者！
+        if(Game.rooms['W53N8'].energyAvailable>=limit)
         {
             var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
             if(builders.length < numBuilder) {
