@@ -35,7 +35,7 @@ var roleOutHarvester1 = {
                 creep.moveTo(new RoomPosition(31, 4, Homename),{visualizePathStyle: {stroke: '#ffaa00'}})
             }
             else{
-                var targets = Home.find(FIND_STRUCTURES, {
+                var targets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (
                             structure.structureType == STRUCTURE_SPAWN ||
@@ -45,13 +45,10 @@ var roleOutHarvester1 = {
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
                 });
-                if (targets.length>0) {
-                    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                if (targets) {
+                    if(creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(targets, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
-                }
-                else{
-
                 }
             }   
         }

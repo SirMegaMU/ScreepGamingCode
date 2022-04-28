@@ -8,6 +8,8 @@ var roleTransferer = require('role.transferer')
 var roleTower1 = require('role.tower1');
 var roleOutHarvester0 = require('role.outhavester0');
 var roleOutHarvester1 = require('role.outhavester1');
+var roleOutHarvester2 = require('role.outhavester2');
+var roleFighter0 = require('role.fighter0');
 
 var WorkDispatch = {
     run:function()
@@ -43,6 +45,12 @@ var WorkDispatch = {
             }
             if(creep.memory.role == 'outharvester1') {
                 roleOutHarvester1.run(creep);
+            }
+            if(creep.memory.role == 'outharvester2') {
+                roleOutHarvester2.run(creep);
+            }
+            if (creep.memory.role == 'fighter0') {
+                roleFighter0.run(creep);
             }
     
         }

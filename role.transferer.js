@@ -24,7 +24,7 @@ var transferer = {
                 {   
                     // find closest container
                     let container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: s => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 200
+                    filter: s => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
                     });
 
                     if (container != undefined) {
