@@ -3,6 +3,8 @@ var wallBuilder = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
+        var WallHit = 15000;
+        
 	    if(creep.memory.repairing && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.repairing = false;
 			creep.say('🔄 take');
@@ -14,7 +16,7 @@ var wallBuilder = {
 
 	    if(creep.memory.repairing) {
 			var broken = creep.pos.findClosestByPath(FIND_STRUCTURES, 
-                {filter: structure => structure.hits <=15000 
+                {filter: structure => structure.hits <=WallHit 
                     && (structure.structureType == STRUCTURE_WALL
                     || structure.structureType == STRUCTURE_RAMPART)
                 });

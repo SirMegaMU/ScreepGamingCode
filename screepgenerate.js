@@ -4,8 +4,8 @@ var ScreepGenerate = {
         /* 开始生产功能性Creep的界值 */
         var limit = 750;
         /* 各种工作的Screep数 */
-        var numHarvester0 = 2       ; var numHarvester1 = 2         ; var numUpgrader = 4           ;
-        var numBuilder = 1          ; var numRepairer = 1           ; var numWallBuilder = 1        ;
+        var numHarvester0 = 3       ; var numHarvester1 = 3         ; var numUpgrader = 2           ;
+        var numBuilder = 3          ; var numRepairer = 1           ; var numWallBuilder = 2        ;
         var numTransferer = 2       ; var numOutHarvester0 = 3      ; var numOutHarvester1 = 2      ;
         var numfighter0 = 0         ; var numOutHarvester2 = 3      ;
         
