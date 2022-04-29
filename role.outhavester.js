@@ -2,10 +2,11 @@ var roleOutHarvester2 = {
 
     
     /** @param {Creep} creep     **/
-    /** @param {string} roomname **/
-    /** @param {string} Homename **/
-    run: function(creep,roomname,Homename) {
 
+    run: function(creep) {
+
+        roomname = creep.memory.targetroom;
+        Homename = creep.memory.targetHome;
 	    if(creep.store.getFreeCapacity() > 0) {
             if (creep.room.name!=roomname){
                 creep.moveTo(new RoomPosition(1, 31, roomname),{reusePath:10})
@@ -26,7 +27,7 @@ var roleOutHarvester2 = {
                         }
                     } 
                 else {
-                    creep.moveTo(new RoomPosition(47, 31, Homename),{reusePath:10});
+                    creep.moveTo(new RoomPosition(25, 25, Homename),{reusePath:10});
                 }
                 }
             }
@@ -34,7 +35,7 @@ var roleOutHarvester2 = {
         else {
             // console.log(creep.name+'in '+creep.room.name);creep.room.name!=Homename
             if(creep.room.name!=Homename){
-                creep.moveTo(new RoomPosition(47, 31, Homename),{visualizePathStyle: {stroke: '#ffaa00'}})
+                creep.moveTo(new RoomPosition(25, 25, Homename),{visualizePathStyle: {stroke: '#ffaa00'}})
             }
             else{
                 var targets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -43,7 +44,8 @@ var roleOutHarvester2 = {
                             structure.structureType == STRUCTURE_SPAWN ||
                             structure.structureType == STRUCTURE_CONTAINER ||
                             structure.structureType == STRUCTURE_EXTENSION ||
-                            structure.structureType == STRUCTURE_TOWER ) && 
+                            structure.structureType == STRUCTURE_TOWER ||
+                            structure.structureType == STRUCTURE_STORAGE) && 
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
                 });

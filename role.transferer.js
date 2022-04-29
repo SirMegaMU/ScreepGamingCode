@@ -27,14 +27,14 @@ var transferer = {
                     filter: s => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0
                     });
 
-                    if (container != undefined) {
+                    if (container) {
                     // try to withdraw energy, if the container is not in range
                         if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                             // move towards it
                             creep.moveTo(container);
                     }
                     else{
-                        var sources = creep.pos.findClosestByPath(FIND_SOURCES);
+                        var sources = creep.room.find(FIND_SOURCES)[0];
                         if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
                             }

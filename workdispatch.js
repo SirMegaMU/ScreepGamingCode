@@ -6,9 +6,13 @@ var roleRepairer = require('role.repairer');
 var roleWallBuilder = require('role.wallbuilder');
 var roleTransferer = require('role.transferer')
 var roleTower1 = require('role.tower1');
-var roleOutHarvester0 = require('role.outhavester0');
+
+var roleReserver = require('role.reserver');
+
+var roleOutHarvester = require('role.outhavester');
 var roleOutHarvester1 = require('role.outhavester1');
 var roleOutHarvester2 = require('role.outhavester2');
+
 var roleFighter0 = require('role.fighter0');
 
 var WorkDispatch = {
@@ -40,8 +44,9 @@ var WorkDispatch = {
             if(creep.memory.role == 'wallbuilder') {
                 roleWallBuilder.run(creep);
             }
-            if(creep.memory.role == 'outharvester0') {
-                roleOutHarvester0.run(creep);
+            /* 外矿任务分配 */
+            if(creep.memory.role == 'outharvester') {
+                roleOutHarvester.run(creep)
             }
             if(creep.memory.role == 'outharvester1') {
                 roleOutHarvester1.run(creep);
@@ -49,6 +54,11 @@ var WorkDispatch = {
             if(creep.memory.role == 'outharvester2') {
                 roleOutHarvester2.run(creep);
             }
+            /* 预定 */
+            if(creep.memory.role == 'reserver') {
+                roleReserver.run(creep);
+            }
+            /* 战斗 */
             if (creep.memory.role == 'fighter0') {
                 roleFighter0.run(creep);
             }

@@ -27,7 +27,8 @@ var roleHarvester0 = {
                     filter: (structure) => {
                         return (
                             structure.structureType == STRUCTURE_CONTAINER ||
-                            structure.structureType == STRUCTURE_TOWER) && 
+                            structure.structureType == STRUCTURE_TOWER ||
+                            structure.structureType == STRUCTURE_STORAGE) && 
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
                 });
