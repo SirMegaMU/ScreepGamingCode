@@ -15,11 +15,11 @@ var roleOutHarvester1 = {
             }
             else{
                 //let closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS,FIND_HOSTILE_TOWER);
-                var sources = creep.room.find(FIND_DROPPED_RESOURCES);
+                var sources = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES);
                 //if (!closestHostile) {
-                    if(sources.length>0){
-                        if(creep.pickup(sources[0]) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                    if(sources){
+                        if(creep.pickup(sources) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
                         }
                         
                         else{

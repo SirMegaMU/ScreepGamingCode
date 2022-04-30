@@ -7,13 +7,13 @@ var ScreepGenerate = {
         var numHarvester0 = 3       ; var numHarvester1 = 3         ; var numUpgrader = 5           ;
         var numBuilder = 1          ; var numRepairer = 3           ; var numWallBuilder = 2        ;
         var numTransferer = 1       ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
-        var numfighter0 = 0         ; var numOutHarvester2 = 4      ;
+        var numfighter0 = 0         ; var numOutHarvester2 = 5      ;
         
         var transferer = _.filter(Game.creeps, (creep) => creep.memory.role == 'transferer');
         if(transferer.length < numTransferer) {
             var newName = 'Transferer-' + Game.time;//console.log('Spawning new Transferer: ' + newName);
             //这个不能改，能量系统出问题了就靠它来解决了
-            Game.spawns['Home1'].spawnCreep([WORK,CARRY,MOVE], newName, 
+            Game.spawns['Home1'].spawnCreep([CARRY,CARRY,MOVE], newName, 
                 {memory: {role: 'transferer'}});        
         }
 
@@ -61,12 +61,12 @@ var ScreepGenerate = {
             var outharvester1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'outharvester1');
             if(outharvester1.length < numOutHarvester1) {
                 var newName = 'OutHarvester1-' + Game.time;
-                Game.spawns['Home1'].spawnCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'outharvester1',targetroom:'W53N9',targetHome:'W53N8'}});        
+                Game.spawns['Home1'].spawnCreep([WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'outharvester1',targetroom:'W53N9',targetHome:'W53N8'}});        
             }
             var outharvester2 = _.filter(Game.creeps, (creep) => creep.memory.role == 'outharvester2');
             if(outharvester2.length < numOutHarvester2) {
                 var newName = 'OutHarvester2-' + Game.time;
-                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'outharvester2',targetroom:'W53N7',targetHome:'W53N8'}});        
+                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'outharvester2',targetroom:'W53N7',targetHome:'W53N8'}});        
             }
             /**
              *   预定房间
