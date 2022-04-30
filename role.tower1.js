@@ -8,9 +8,8 @@ var roleTower1 = {
             let closestHostile = tower1.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
             let closestDamagedStructure = tower1.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_ROAD || structure.structureType == STRUCTURE_CONTAINER  
-                                //|| structure.structureType == STRUCTURE_WALL
-                                ) && structure.hits < structure.hitsMax;
+                        return ((structure.structureType == STRUCTURE_ROAD || structure.structureType == STRUCTURE_CONTAINER  ) && structure.hits < structure.hitsMax) ||
+                            ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits<1500);
                     }
                 });
                 if(closestHostile) {
