@@ -16,9 +16,7 @@ var roleTower1 = {
                 if(closestHostile) {
                     tower1.attack(closestHostile);
                 }
-                else if(closestDamagedStructure && tower1.store.getFreeCapacity(RESOURCE_ENERGY) < 200) {
-                    tower1.repair(closestDamagedStructure);
-                }
+                else if(closestDamagedStructure && tower1.store.getFreeCapacity(RESOURCE_ENERGY) < 200) {tower1.repair(closestDamagedStructure);}
         }
         if(tower2) {
             let closestHostile = tower2.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
@@ -31,9 +29,7 @@ var roleTower1 = {
                 if(closestHostile) {
                     tower2.attack(closestHostile);
                 }
-                else if(closestDamagedStructure && tower1.store.getFreeCapacity(RESOURCE_ENERGY) < 200) {
-                    tower2.repair(closestDamagedStructure);
-                }
+                //else if(closestDamagedStructure && tower1.store.getFreeCapacity(RESOURCE_ENERGY) < 200) {tower2.repair(closestDamagedStructure);}
         }
     }
 }

@@ -4,16 +4,16 @@ var ScreepGenerate = {
         /* 开始生产功能性Creep的界值 */
         var limit = 750;
         /* 各种工作的Screep数 */
-        var numHarvester0 = 2       ; var numHarvester1 = 2         ; var numUpgrader = 2           ;
-        var numBuilder = 1          ; var numRepairer = 1           ; var numWallBuilder = 1        ;
-        var numTransferer = 2      ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
+        var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numUpgrader = 2           ;
+        var numBuilder = 0          ; var numRepairer = 1           ; var numWallBuilder = 1        ;
+        var numTransferer = 4      ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
         var numfighter0 = 0         ; var numOutHarvester2 = 5      ;
         
         var transferer = _.filter(Game.creeps, (creep) => creep.memory.role == 'transferer');
         if(transferer.length < numTransferer) {
             var newName = 'Transferer-' + Game.time;//console.log('Spawning new Transferer: ' + newName);
             //这个不能改，能量系统出问题了就靠它来解决了
-            Game.spawns['Home1'].spawnCreep([CARRY,CARRY,MOVE], newName, 
+            Game.spawns['Home1'].spawnCreep([CARRY,MOVE], newName, 
                 {memory: {role: 'transferer'}});        
         }
 
@@ -35,7 +35,7 @@ var ScreepGenerate = {
             var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
             if(upgraders.length < numUpgrader) {
                 var newName = 'Upgrader-' + Game.time;
-                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName, {memory: {role: 'upgrader'}});        
+                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'upgrader'}});        
             }
 
             var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
