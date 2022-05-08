@@ -4,7 +4,10 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleWallBuilder = require('role.wallbuilder');
-var roleTransferer = require('role.transferer')
+
+var roleTransferer = require('role.transferer');
+var roleCarrier = require('role.carrier');
+
 var roleTower1 = require('role.tower1');
 
 var roleReserver = require('role.reserver');
@@ -38,9 +41,14 @@ var WorkDispatch = {
             if (creep.memory.role == 'repairer') {
                 roleRepairer.run(creep);
             }
+
             if(creep.memory.role == 'transferer') {
                 roleTransferer.run(creep);
             }
+            if(creep.memory.role == 'carrier') {
+                roleCarrier.run(creep);
+            }
+
             if(creep.memory.role == 'wallbuilder') {
                 roleWallBuilder.run(creep);
             }

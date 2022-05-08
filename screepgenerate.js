@@ -4,10 +4,10 @@ var ScreepGenerate = {
         /* 开始生产功能性Creep的界值 */
         var limit = 750;
         /* 各种工作的Screep数 */
-        var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numUpgrader = 2           ;
-        var numBuilder = 0          ; var numRepairer = 1           ; var numWallBuilder = 1        ;
-        var numTransferer = 4      ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
-        var numfighter0 = 0         ; var numOutHarvester2 = 5      ;
+        var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numUpgrader = 3           ;
+        var numBuilder = 1          ; var numRepairer = 1           ; var numWallBuilder = 1        ;
+        var numTransferer = 3       ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
+        var numfighter0 = 0         ; var numOutHarvester2 = 5      ; var numCarrier = 1
         
         var transferer = _.filter(Game.creeps, (creep) => creep.memory.role == 'transferer');
         if(transferer.length < numTransferer) {
@@ -15,6 +15,12 @@ var ScreepGenerate = {
             //这个不能改，能量系统出问题了就靠它来解决了
             Game.spawns['Home1'].spawnCreep([CARRY,MOVE], newName, 
                 {memory: {role: 'transferer'}});        
+        }
+        var carrier = _.filter(Game.creeps, (creep) => creep.memory.role == 'carrier');
+        if(carrier.length < numCarrier) {
+            var newName = 'Carrier-' + Game.time;numCarrier
+            Game.spawns['Home1'].spawnCreep([CARRY,CARRY,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY], newName, 
+                {memory: {role: 'carrier'}});        
         }
 
         var harvesters1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester1');
