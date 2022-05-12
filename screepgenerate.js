@@ -5,9 +5,10 @@ var ScreepGenerate = {
         var limit = 750;
         /* 各种工作的Screep数 */
         var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numUpgrader = 3           ;
-        var numBuilder = 1          ; var numRepairer = 1           ; var numWallBuilder = 1        ;
+        var numBuilder = 0          ; var numBuilder1 = 2           ;
+        var numRepairer = 1         ; var numWallBuilder = 1        ;
         var numTransferer = 3       ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
-        var numfighter0 = 0         ; var numOutHarvester2 = 5      ; var numCarrier = 1
+        var numfighter0 = 0         ; var numOutHarvester2 = 5      ; var numCarrier = 1            ;
         
         var transferer = _.filter(Game.creeps, (creep) => creep.memory.role == 'transferer');
         if(transferer.length < numTransferer) {
@@ -41,13 +42,18 @@ var ScreepGenerate = {
             var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
             if(upgraders.length < numUpgrader) {
                 var newName = 'Upgrader-' + Game.time;
-                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'upgrader'}});        
+                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'upgrader'}});        
             }
 
             var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
             if(builders.length < numBuilder) {
                 var newName = 'Builder-' + Game.time;
                 Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'builder'}});        
+            }
+            var builders1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder1');
+            if(builders1.length < numBuilder) {
+                var newName = 'Builder1-' + Game.time;
+                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'builder1'}});        
             }
 
             var repairer = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');

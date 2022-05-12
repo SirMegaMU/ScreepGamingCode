@@ -50,18 +50,18 @@ var roleBuilder = {
             }
             
             else
-            {   var resources = creep.room.find(FIND_DROPPED_RESOURCES);
-                if(resources.length>0)
+            {   var resources = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES);
+                if(resources)
                 {
-                    if(creep.pickup(resources[0])==ERR_NOT_IN_RANGE)
+                    if(creep.pickup(resources)==ERR_NOT_IN_RANGE)
                     {
-                        creep.moveTo(resources[0]);
+                        creep.moveTo(resources);
                     }
                 }
                 else{
-                    var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[1], {visualizePathStyle: {stroke: '#ffaa00'}});
+                    var sources = creep.pos.findClosestByPath(FIND_SOURCES);
+                if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
                 }
                 
             }

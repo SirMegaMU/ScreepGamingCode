@@ -1,7 +1,10 @@
 var roleHarvester0 = require('role.harvester0');
 var roleHarvester1 = require('role.harvester1');
 var roleUpgrader = require('role.upgrader');
+
 var roleBuilder = require('role.builder');
+var roleBuilder1 = require('role.builder1');
+
 var roleRepairer = require('role.repairer');
 var roleWallBuilder = require('role.wallbuilder');
 
@@ -32,6 +35,11 @@ var WorkDispatch = {
             if(creep.memory.role == 'builder' ) {
                 roleBuilder.run(creep);
             }
+            if(creep.memory.role == 'builder1' ) {
+                roleBuilder1.run(creep);
+            }
+
+
             if(creep.memory.role == 'harvester0') {
                 roleHarvester0.run(creep);
             }
