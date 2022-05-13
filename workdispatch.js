@@ -3,11 +3,13 @@ var roleHarvester1 = require('role.harvester1');
 var roleMineral = require("role.mineral");
 
 var roleUpgrader = require('role.upgrader');
+var roleUpgrader1 = require('role.upgrader1');
 
 var roleBuilder = require('role.builder');
 var roleBuilder1 = require('role.builder1');
 
 var roleRepairer = require('role.repairer');
+var roleRepairer1 = require('role.repairer1');
 var roleWallBuilder = require('role.wallbuilder');
 
 var roleTransferer = require('role.transferer');
@@ -34,6 +36,9 @@ var WorkDispatch = {
             if(creep.memory.role == 'upgrader') {
                 roleUpgrader.run(creep);
             }
+            if(creep.memory.role == 'upgrader1') {
+                roleUpgrader1.run(creep);
+            }
             if(creep.memory.role == 'builder' ) {
                 roleBuilder.run(creep);
             }
@@ -52,6 +57,9 @@ var WorkDispatch = {
             }
             if (creep.memory.role == 'repairer') {
                 roleRepairer.run(creep);
+            }
+            if (creep.memory.role == 'repairer1') {
+                roleRepairer1.run(creep);
             }
 
             if(creep.memory.role == 'transferer') {

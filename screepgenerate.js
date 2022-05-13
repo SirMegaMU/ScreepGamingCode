@@ -5,9 +5,10 @@ var ScreepGenerate = {
         var limit = 750;
         /* 各种工作的Screep数 */
         var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numMineral = 1            ;
-        var numUpgrader = 2           ;
+        var numUpgrader = 2         ; var numUpgrader1 = 2           ;
         var numBuilder = 2          ; var numBuilder1 = 2           ;
-        var numRepairer = 1         ; var numWallBuilder = 1        ;
+        var numRepairer = 1         ; var numRepairer1 = 1         ; 
+        var numWallBuilder = 1      ;
         var numTransferer = 3       ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
         var numfighter0 = 0         ; var numOutHarvester2 = 5      ; var numCarrier = 1            ;
         
@@ -45,7 +46,7 @@ var ScreepGenerate = {
                 var newName = 'Upgrader-' + Game.time;
                 Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'upgrader'}});        
             }
-
+            
             var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
             if(builders.length < numBuilder) {
                 var newName = 'Builder-' + Game.time;
@@ -104,6 +105,16 @@ var ScreepGenerate = {
                 var newName = 'fighter0-' + Game.time;//console.log('Spawning new fighter0: ' + newName);
                 Game.spawns['Home1'].spawnCreep([ATTACK,ATTACK,MOVE,MOVE], newName, {memory: {role: 'fighter0'}});        
             }
+        }
+        var upgraders1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader1');
+        if(upgraders1.length < numUpgrader1) {
+            var newName = 'Upgrader1-' + Game.time;
+            Game.spawns['Base2'].spawnCreep([WORK,CARRY,MOVE], newName, {memory: {role: 'upgrader1'}});        
+        }
+        var repairer1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer1');
+        if(repairer1.length < numRepairer1) {
+            var newName = 'Repairer-' + Game.time;
+            Game.spawns['Base2'].spawnCreep([WORK,CARRY,MOVE], newName, {memory: {role: 'repairer1'}});        
         }
     }
 }

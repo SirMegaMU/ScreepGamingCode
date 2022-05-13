@@ -2,7 +2,7 @@ var roleBuilder1 = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        var roomname ="W54N7";
+        var roomname ="W53N7";
         if (creep.room.name==roomname) {
             if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
                 creep.memory.building = false;
