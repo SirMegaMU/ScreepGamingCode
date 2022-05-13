@@ -4,8 +4,9 @@ var ScreepGenerate = {
         /* 开始生产功能性Creep的界值 */
         var limit = 750;
         /* 各种工作的Screep数 */
-        var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numUpgrader = 3           ;
-        var numBuilder = 0          ; var numBuilder1 = 2           ;
+        var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numMineral = 1            ;
+        var numUpgrader = 2           ;
+        var numBuilder = 2          ; var numBuilder1 = 2           ;
         var numRepairer = 1         ; var numWallBuilder = 1        ;
         var numTransferer = 3       ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
         var numfighter0 = 0         ; var numOutHarvester2 = 5      ; var numCarrier = 1            ;
@@ -51,7 +52,7 @@ var ScreepGenerate = {
                 Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'builder'}});        
             }
             var builders1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder1');
-            if(builders1.length < numBuilder) {
+            if(builders1.length < numBuilder1) {
                 var newName = 'Builder1-' + Game.time;
                 Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'builder1'}});        
             }
@@ -79,6 +80,12 @@ var ScreepGenerate = {
             if(outharvester2.length < numOutHarvester2) {
                 var newName = 'OutHarvester2-' + Game.time;
                 Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName, {memory: {role: 'outharvester2',targetroom:'W53N7',targetHome:'W53N8'}});        
+            }
+
+            var mineral = _.filter(Game.creeps, (creep) => creep.memory.role == 'mineral');
+            if(outharvester2.length < numMineral) {
+                var newName = 'Mineral-' + Game.time;
+                Game.spawns['Home1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName, {memory: {role: 'mineral',targetroom:'W53N8',targetHome:'W53N8'}});        
             }
             /**
              *   预定房间
