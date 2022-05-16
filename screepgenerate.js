@@ -6,10 +6,10 @@ var ScreepGenerate = {
         /* 各种工作的Screep数 */
         var numHarvester0 = 1       ; var numHarvester1 = 1         ; var numMineral = 1            ;
         var numUpgrader = 2         ; var numUpgrader1 = 2           ;
-        var numBuilder = 2          ; var numBuilder1 = 2           ;
-        var numRepairer = 1         ; var numRepairer1 = 1         ; 
+        var numBuilder = 2          ; var numBuilder1 = 1           ;
+        var numRepairer = 1         ; var numRepairer1 = 2         ; 
         var numWallBuilder = 1      ;
-        var numTransferer = 3       ; var numOutHarvester1 = 2      ; var numReserver = 1           ;
+        var numTransferer = 3       ; var numOutHarvester1 = 2      ; var numReserver = 0           ;
         var numfighter0 = 0         ; var numOutHarvester2 = 5      ; var numCarrier = 1            ;
         
         var transferer = _.filter(Game.creeps, (creep) => creep.memory.role == 'transferer');
