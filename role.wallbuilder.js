@@ -3,7 +3,7 @@ var wallBuilder = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        var WallHit = 15000;
+        var WallHit = 20000;
         
 	    if(creep.memory.repairing && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.repairing = false;
@@ -15,15 +15,21 @@ var wallBuilder = {
 	    }
 
 	    if(creep.memory.repairing) {
-			var broken = creep.pos.findClosestByPath(FIND_STRUCTURES, 
+			var broken = creep.room.find(FIND_STRUCTURES, 
                 {filter: structure => structure.hits <=WallHit 
                     && (structure.structureType == STRUCTURE_WALL
-                    || structure.structureType == STRUCTURE_RAMPART)
-                });
-				if(broken) {
-					if(creep.repair(broken) == ERR_NOT_IN_RANGE) {
-						creep.moveTo(broken);// check if there are broken structures
+                    || structure.structureType == STRUCTURE_RAMPART)});
+				if(broken[0]) {
+					if(creep.repair(broken[0]) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(broken[0]);// check if there are broken structures
 					}
+				}
+				else{var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+                    if(targets.length) {
+                        if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                        }
+                    }
 				}
 	    }
 	    else {

@@ -11,7 +11,8 @@ var roleMineral = {
         else {
             var targets = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return structure.structureType == STRUCTURE_STORAGE      }
+                    return structure.structureType == STRUCTURE_STORAGE || 
+                    structure.structureType == STRUCTURE_TERMINAL   }
         });
             if(targets) {
                 for(const resourceType in creep.carry) {
